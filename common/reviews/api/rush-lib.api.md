@@ -798,6 +798,8 @@ export class RushConfigurationProject {
     get rushConfiguration(): RushConfiguration;
     get shouldPublish(): boolean;
     get skipRushCheck(): boolean;
+    // (undocumented)
+    readonly splitWorkspace: boolean;
     // @beta
     get tags(): ReadonlySet<string>;
     get tempProjectName(): string;

@@ -25,6 +25,7 @@ export interface IRushConfigurationProjectJson {
   skipRushCheck?: boolean;
   publishFolder?: string;
   tags?: string[];
+  splitWorkspace?: boolean;
 }
 
 /**
@@ -76,6 +77,8 @@ export class RushConfigurationProject {
   private _versionPolicy: VersionPolicy | undefined = undefined;
   private _dependencyProjects: Set<RushConfigurationProject> | undefined = undefined;
   private _consumingProjects: Set<RushConfigurationProject> | undefined = undefined;
+
+  public readonly splitWorkspace: boolean;
 
   /** @internal */
   public constructor(options: IRushConfigurationProjectOptions) {
@@ -187,6 +190,8 @@ export class RushConfigurationProject {
     } else {
       this._tags = new Set(projectJson.tags);
     }
+
+    this.splitWorkspace = !!projectJson.splitWorkspace;
   }
 
   /**
