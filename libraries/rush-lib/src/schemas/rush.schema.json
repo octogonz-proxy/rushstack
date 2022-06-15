@@ -294,7 +294,7 @@
             }
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": true,
         "required": ["packageName", "projectFolder"]
       }
     },

@@ -4,6 +4,7 @@
 /* eslint max-lines: off */
 
 import * as path from 'path';
+import * as process from 'process';
 import * as semver from 'semver';
 import {
   JsonFile,
@@ -769,9 +770,14 @@ export class RushConfiguration {
     this._projects = [];
     this._projectsByName = new Map<string, RushConfigurationProject>();
 
+    let filteredProjects: IRushConfigurationProjectJson[] = this._rushConfigurationJson.projects;
+    if (process.argv.indexOf('install') >= 0 || process.argv.indexOf('update') >= 0) {
+      filteredProjects = filteredProjects.filter((x) => !x.splitWorkspace);
+    }
+
     // We sort the projects array in alphabetical order.  This ensures that the packages
     // are processed in a deterministic order by the various Rush algorithms.
-    const sortedProjectJsons: IRushConfigurationProjectJson[] = this._rushConfigurationJson.projects.slice(0);
+    const sortedProjectJsons: IRushConfigurationProjectJson[] = filteredProjects.slice(0);
     sortedProjectJsons.sort((a: IRushConfigurationProjectJson, b: IRushConfigurationProjectJson) =>
       a.packageName.localeCompare(b.packageName)
     );
