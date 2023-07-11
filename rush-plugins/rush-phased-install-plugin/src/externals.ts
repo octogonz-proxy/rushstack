@@ -3,24 +3,29 @@
 
 // This file is purely for optimizing the loading of this code when running inside of Rush.
 
-import type { ChildProcess } from 'node:child_process';
-import type Module from 'node:module';
-import type { Operation as OperationType, OperationStatus as OperationStatusType } from '@rushstack/rush-sdk';
-import type * as rushSdkType from '@rushstack/rush-sdk';
-import type { IPnpmLockYaml } from './types';
+//import type { ChildProcess } from 'node:child_process';
+//import type Module from 'node:module';
+//import type * as rushSdkType from '@rushstack/rush-sdk';
+//import type { IPnpmLockYaml } from './types';
+
+/*
+import  { Operation as OperationType, OperationStatus as OperationStatusType } from '@rushstack/rush-sdk';
 
 // Ultra-cheap "I am a Rush plugin" import of rush-lib
 // eslint-disable-next-line @typescript-eslint/naming-convention
-declare const ___rush___rushLibModule: typeof rushSdkType;
+//declare const ___rush___rushLibModule: typeof rushSdkType;
 
-const { Operation, OperationStatus } = ___rush___rushLibModule;
+// const { Operation, OperationStatus } = ___rush___rushLibModule;
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 type Operation = OperationType;
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 type OperationStatus = OperationStatusType;
 
 export { Operation, OperationStatus };
+*/
+export { Operation, OperationStatus } from '@rushstack/rush-sdk';
 
+/*
 // eslint-disable-next-line @typescript-eslint/naming-convention
 declare const __non_webpack_require__: typeof require;
 
@@ -38,7 +43,11 @@ function getExternal(name: string): any {
 export const PnpmShrinkwrapFile: {
   loadFromString(data: string): IPnpmLockYaml;
 } = getExternal('@microsoft/rush-lib/lib/logic/pnpm/PnpmShrinkwrapFile').PnpmShrinkwrapFile;
+*/
 
+export { PnpmShrinkwrapFile } from '@rushstack/rush-sdk/lib/logic/pnpm/PnpmShrinkwrapFile';
+
+/*
 export const Utilities: {
   executeLifecycleCommandAsync(
     command: string,
@@ -53,12 +62,24 @@ export const Utilities: {
     }
   ): ChildProcess;
 } = getExternal('@microsoft/rush-lib/lib/utilities/Utilities').Utilities;
+*/
+
+export { Utilities } from '@rushstack/rush-sdk/lib/utilities/Utilities';
+
+/*
 
 // Avoid bundling expensive stuff that's already part of Rush.
 export const Async: typeof import('@rushstack/node-core-library/lib/Async').Async = getExternal(
   `@rushstack/node-core-library/lib/Async`
 ).Async;
+*/
 
+export { Async } from '@rushstack/node-core-library';
+
+/*
 export const JsonFile: typeof import('@rushstack/node-core-library/lib/JsonFile').JsonFile = getExternal(
   `@rushstack/node-core-library/lib/JsonFile`
 ).JsonFile;
+*/
+
+export { JsonFile } from '@rushstack/node-core-library';

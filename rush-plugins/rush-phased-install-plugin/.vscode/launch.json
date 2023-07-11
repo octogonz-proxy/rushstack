@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug startMock.js",
+            "program": "${workspaceFolder}/lib/startMock.js",
+            "cwd": "/Users/bytedance/code/tsdoc",
+            "args": [],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug PNPM",
+            "program": "/Users/bytedance/code/hacked-pnpm/node_modules/pnpm/bin/pnpm.cjs",
+            //"cwd": "/Users/bytedance/code/tsdoc",
+
+            // "program": "/Users/bytedance/.nvm/versions/node/v14.21.2/bin/pnpm/bin/pnpm.cjs",            
+            "cwd": "/Users/bytedance/code/example-project",
+
+            "args": [ "install" ],
+            // "args": [ "--help" ],
+            "console": "integratedTerminal",
+            "stopOnEntry": true
+        }
+    ]
+}

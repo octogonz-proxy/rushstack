@@ -74,6 +74,7 @@ export async function apply(
   (action as { telemetry?: unknown }).telemetry = undefined;
 
   const { terminal } = session.getLogger(pluginName);
+  debugger;
   terminal.writeLine(`Creating phases`);
 
   const authenticatePhase: IPhase = createPhase('authenticate');
@@ -112,7 +113,7 @@ export async function apply(
     fs.promises.mkdir(installRoot, { recursive: true })
   ]);
 
-  const lockfile: IPnpmLockYaml = PnpmShrinkwrapFile.loadFromString(rawLockfile);
+  const lockfile: IPnpmLockYaml = PnpmShrinkwrapFile.loadFromString(rawLockfile) as unknown as IPnpmLockYaml;
   const { importers, packages } = lockfile;
 
   const pnpmConfigJson: IPnpmConfigJson = pnpmConfig;
